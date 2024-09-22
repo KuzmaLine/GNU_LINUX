@@ -58,9 +58,6 @@ struct FILE_TEXT* read_file(char* filename) {
     }
 
     fclose(fd);
-
-    printf("MAX: %d\n", text->max_str_length);
-
     return text;
 }
 
