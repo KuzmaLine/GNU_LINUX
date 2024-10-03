@@ -24,9 +24,9 @@ prog-so: prog.o liboutput.so
 progs:	prog prog-a prog-so
 
 test: progs
-	./prog > test-no 2>&1 & ./prog > test-one 2>&1 HERE  & ./prog > test-three 2>&1 abc cbd efg 
-	./prog-a > test-a-no 2>&1 & ./prog-a > test-a-one 2>&1 HERE  & ./prog-a > test-a-three 2>&1 abc cbd efg 
-	./prog-so > test-so-no 2>&1 & ./prog-so > test-so-one 2>&1 HERE  & ./prog-so > test-so-three 2>&1 abc cbd efg 
+	./prog > test-no 2>&1 && ./prog > test-one 2>&1 HERE  && ./prog > test-three 2>&1 abc cbd efg 
+	./prog-a > test-a-no 2>&1 && ./prog-a > test-a-one 2>&1 HERE  && ./prog-a > test-a-three 2>&1 abc cbd efg 
+	./prog-so > test-so-no 2>&1 && ./prog-so > test-so-one 2>&1 HERE  && ./prog-so > test-so-three 2>&1 abc cbd efg 
 	cmp test-no test-a-no
 	cmp test-so-no test-a-no 
 	cmp test-one test-a-one
