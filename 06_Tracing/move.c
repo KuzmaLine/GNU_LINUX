@@ -71,16 +71,6 @@ int main(int argc, char** argv) {
         return ERROR_READ_INPUT_FILE;
     }
 
-    if (fclose(input) != 0) {
-        fprintf(stderr, "Closing input file failed!\n");
-        free(buf);
-        if (remove(argv[2]) != 0) {
-            fprintf(stderr, "Removing output file failed!\n");
-            return ERROR_DELETE_OUTPUT_FILE;
-        };
-        return ERROR_CLOSE_INPUT_FILE;
-    }
-
     if (fclose(output) != 0) {
         fprintf(stderr, "Closing output file failed!\n");
         free(buf);
@@ -89,6 +79,16 @@ int main(int argc, char** argv) {
             return ERROR_DELETE_OUTPUT_FILE;
         };
         return ERROR_CLOSE_OUTPUT_FILE;
+    }
+
+    if (fclose(input) != 0) {
+        fprintf(stderr, "Closing input file failed!\n");
+        free(buf);
+        if (remove(argv[2]) != 0) {
+            fprintf(stderr, "Removing output file failed!\n");
+            return ERROR_DELETE_OUTPUT_FILE;
+        };
+        return ERROR_CLOSE_INPUT_FILE;
     }
 
     free(buf);
