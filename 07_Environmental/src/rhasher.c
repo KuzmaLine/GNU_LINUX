@@ -2,12 +2,11 @@
 #include <rhash.h>
 #include <stdlib.h>
 #include <string.h>
-#include "config.h"
+//#include "config.h"
 #include <ctype.h>
 
-#ifdef USE_READLINE
+#ifdef ENABLE_READLINE
 #include <readline/readline.h>
-#include <readline/history.h>
 #endif
 
 int hash_file(const char* filename, int hash_type, int output_type, unsigned char* digest, char* output) {
@@ -34,7 +33,7 @@ int main(int argc, char** argv) {
     
     int hash_type, output_type;
 
-    rhash_library_init();\
+    rhash_library_init();
     
    
 #ifndef ENABLE_READLINE
@@ -44,8 +43,7 @@ int main(int argc, char** argv) {
     while((count = getline(&line, &lenght, stdin)) != -1) {
 #else
     char* line = NULL;
-    printf("READLINE ENABLED!\n");
-    while((line = readline("> ")) != NULL) {
+    while((line = readline(NULL)) != NULL) {
 #endif
         char* cry_type_str = strtok(line, &delim);
         char* input = strtok(NULL, &delim);
@@ -72,11 +70,10 @@ int main(int argc, char** argv) {
             output_type = RHPR_BASE64;
         }
 
-        output_type |= RHPR_UPPERCASE;
-
         if (input[0] == '"') {
             hash_string(input, hash_type, output_type, digest, output);
         } else {
+            input[strlen(input) - 1] = '\0';
             hash_file(input, hash_type, output_type, digest, output);
         }
 
