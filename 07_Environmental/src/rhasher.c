@@ -2,7 +2,7 @@
 #include <rhash.h>
 #include <stdlib.h>
 #include <string.h>
-//#include "config.h"
+#include "config.h"
 #include <ctype.h>
 
 #ifdef ENABLE_READLINE
@@ -35,18 +35,18 @@ int main(int argc, char** argv) {
 
     rhash_library_init();
     
-   
-#ifndef ENABLE_READLINE
     char* line;
+#ifdef ENABLE_READLINE
+    while((line = readline(NULL)) != NULL) {
+#else
     size_t lenght = 0;
     ssize_t count;
     while((count = getline(&line, &lenght, stdin)) != -1) {
-#else
-    char* line = NULL;
-    while((line = readline(NULL)) != NULL) {
 #endif
+        
         char* cry_type_str = strtok(line, &delim);
         char* input = strtok(NULL, &delim);
+        //printf("%s\n", input);
 
         if (cry_type_str == NULL || input == NULL) {
             fprintf(stderr, "Введите алгоритм шифрования (Доступны sha1, md5, tth) и через пробел имя файла или строку через \"\"!\n");
@@ -71,9 +71,11 @@ int main(int argc, char** argv) {
         }
 
         if (input[0] == '"') {
+            input[strlen(input) - 1] = '\0';
+            input = input + 1;
+            //printf("%s\n", input);
             hash_string(input, hash_type, output_type, digest, output);
         } else {
-            input[strlen(input) - 1] = '\0';
             hash_file(input, hash_type, output_type, digest, output);
         }
 
