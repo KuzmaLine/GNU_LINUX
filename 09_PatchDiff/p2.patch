@@ -1,0 +1,49 @@
+--- lab_with_size.c	2024-11-16 20:18:35.123989318 +0300
++++ lab_with_size_and_symbols.c	2024-11-16 20:18:25.713983306 +0300
+@@ -3,8 +3,6 @@
+ #include <time.h>
+ #include <stdlib.h>
+ 
+-#define SPACE '.'
+-#define WALL '#'
+ #define TARGET '!'
+ #define INDX(i, j, n) ((i) * n + (j))
+ 
+@@ -88,8 +86,8 @@
+ }
+ */
+ 
+-void print_lab(int* lab, int size) {
+-    char symbols[] = {WALL, SPACE, TARGET};
++void print_lab(int* lab, int size, char empty_char, char occ_char) {
++    char symbols[] = {occ_char, empty_char, TARGET};
+     for (int i = 0; i < size; i++) {
+         for (int j = 0; j < size; j++) {
+             printf("%c", symbols[lab[INDX(i,j, size)]]);
+@@ -140,12 +138,14 @@
+ }
+ 
+ int main(int argc, char** argv) {
+-    if (argc != 2) {
+-        fprintf(stderr, "Needs one argument");
++    if (argc != 3) {
++        fprintf(stderr, "Needs two arguments");
+         return 1;
+     }
+     srand(time(NULL));
+-    int SIZE = atoi(argv[1]);
++    char empty_char = argv[1][0];
++    char occ_char = argv[1][1];
++    int SIZE = atoi(argv[2]);
+     int actual_size = SIZE * 2 + 1;
+     int* lab = (int*)malloc(sizeof(int) * actual_size * actual_size);
+     memset(lab, 0, sizeof(int) * actual_size * actual_size);
+@@ -230,7 +230,7 @@
+         }
+     }
+ 
+-    print_lab(lab, actual_size);
++    print_lab(lab, actual_size, empty_char, occ_char);
+ 
+     free(lab);
+     return 0;

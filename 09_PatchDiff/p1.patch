@@ -1,0 +1,23 @@
+--- lab.c	2024-11-16 20:18:44.944022880 +0300
++++ lab_with_size.c	2024-11-16 20:18:35.123989318 +0300
+@@ -3,7 +3,6 @@
+ #include <time.h>
+ #include <stdlib.h>
+ 
+-#define SIZE 6
+ #define SPACE '.'
+ #define WALL '#'
+ #define TARGET '!'
+@@ -141,7 +140,12 @@
+ }
+ 
+ int main(int argc, char** argv) {
++    if (argc != 2) {
++        fprintf(stderr, "Needs one argument");
++        return 1;
++    }
+     srand(time(NULL));
++    int SIZE = atoi(argv[1]);
+     int actual_size = SIZE * 2 + 1;
+     int* lab = (int*)malloc(sizeof(int) * actual_size * actual_size);
+     memset(lab, 0, sizeof(int) * actual_size * actual_size);

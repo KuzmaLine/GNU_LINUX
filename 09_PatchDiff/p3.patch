@@ -1,0 +1,23 @@
+--- lab_with_size_and_symbols.c	2024-11-16 20:18:25.713983306 +0300
++++ lab_with_size_and_symbols_and_random.c	2024-11-16 20:20:38.123978689 +0300
+@@ -138,14 +138,14 @@
+ }
+ 
+ int main(int argc, char** argv) {
+-    if (argc != 3) {
+-        fprintf(stderr, "Needs two arguments");
++    if (argc != 4) {
++        fprintf(stderr, "Needs three arguments");
+         return 1;
+     }
+-    srand(time(NULL));
+-    char empty_char = argv[1][0];
+-    char occ_char = argv[1][1];
+-    int SIZE = atoi(argv[2]);
++    srand(atoi(argv[1]));
++    char empty_char = argv[2][0];
++    char occ_char = argv[2][1];
++    int SIZE = atoi(argv[3]);
+     int actual_size = SIZE * 2 + 1;
+     int* lab = (int*)malloc(sizeof(int) * actual_size * actual_size);
+     memset(lab, 0, sizeof(int) * actual_size * actual_size);
