@@ -1,0 +1,1 @@
+/usr/bin/cc --coverage CMakeFiles/clear_no_op.dir/tests.c.o -o clear_no_op 

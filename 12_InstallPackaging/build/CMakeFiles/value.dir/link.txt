@@ -1,0 +1,1 @@
+/usr/bin/cc --coverage CMakeFiles/value.dir/tests.c.o -o value 

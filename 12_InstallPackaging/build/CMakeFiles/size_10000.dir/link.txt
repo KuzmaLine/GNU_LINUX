@@ -1,0 +1,1 @@
+/usr/bin/cc --coverage CMakeFiles/size_10000.dir/tests.c.o -o size_10000 

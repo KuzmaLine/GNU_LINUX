@@ -1,0 +1,158 @@
+\hypertarget{tests_8c}{}\doxysection{/home/kuzmaline/\+GNU\+\_\+\+LINUX/12\+\_\+\+Install\+Packaging/tests.c File Reference}
+\label{tests_8c}\index{/home/kuzmaline/GNU\_LINUX/12\_InstallPackaging/tests.c@{/home/kuzmaline/GNU\_LINUX/12\_InstallPackaging/tests.c}}
+
+
+Test suite for the dynamic buffer operations.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$setjmp.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$getopt.\+h$>$}\newline
+{\ttfamily \#include $<$libintl.\+h$>$}\newline
+{\ttfamily \#include $<$libgen.\+h$>$}\newline
+{\ttfamily \#include $<$locale.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}buf.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$sys/time.\+h$>$}\newline
+Include dependency graph for tests.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tests_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{tests_8c_ab92bb4161a6308b302d283816975c3a6}{\+\_\+}}(STRING)~gettext(STRING)
+\item 
+\mbox{\Hypertarget{tests_8c_a88e2b56f5b156491cb02f82473e89e6f}\label{tests_8c_a88e2b56f5b156491cb02f82473e89e6f}} 
+\#define \mbox{\hyperlink{tests_8c_a88e2b56f5b156491cb02f82473e89e6f}{BUF\+\_\+\+ABORT}}~test\+\_\+abort()
+\begin{DoxyCompactList}\small\item\em Override of BUF\+\_\+\+ABORT to call test\+\_\+abort(). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{tests_8c_a4e74e4ff52d80009272f8fcadd0048b8}\label{tests_8c_a4e74e4ff52d80009272f8fcadd0048b8}} 
+\#define \mbox{\hyperlink{tests_8c_a4e74e4ff52d80009272f8fcadd0048b8}{C\+\_\+\+RED}}(s)~\char`\"{}\textbackslash{}033\mbox{[}31;1m\char`\"{} s \char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}
+\begin{DoxyCompactList}\small\item\em Define color macros based on platform. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{tests_8c_ad588e4339978c8f52d37c16783467291}\label{tests_8c_ad588e4339978c8f52d37c16783467291}} 
+\#define {\bfseries C\+\_\+\+GREEN}(s)~\char`\"{}\textbackslash{}033\mbox{[}32;1m\char`\"{} s \char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{tests_8c_a7635865072e17689a2e4aa26f65f8d9d}{TEST}}(s,  x)
+\begin{DoxyCompactList}\small\item\em Macro for testing conditions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{tests_8c_a84786dab5f630d5a481bbda26a596fea}{uepoch}} (void)
+\begin{DoxyCompactList}\small\item\em Returns the current time in microseconds on Unix-\/based systems. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tests_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Main function to execute the tests. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Test suite for the dynamic buffer operations. 
+
+This file contains a test suite for the buffer functions defined in \char`\"{}buf.\+h\char`\"{}. The tests validate various operations like initialization, push, pop, growth, truncation, and error handling for memory allocation failures. Additionally, the file includes a benchmarking functionality to assess the performance of the buffer operations.\hypertarget{tests_8c_test_macros}{}\doxysubsection{Macros\+:}\label{tests_8c_test_macros}
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{\hyperlink{tests_8c_a7635865072e17689a2e4aa26f65f8d9d}{TEST(s, x)}}} \+: Runs a test for the condition {\ttfamily x}, printing \char`\"{}\+PASS\char`\"{} or \char`\"{}\+FAIL\char`\"{} with the test name {\ttfamily s}.
+\end{DoxyItemize}\hypertarget{tests_8c_platform_specific}{}\doxysubsection{Platform-\/specific code\+:}\label{tests_8c_platform_specific}
+
+\begin{DoxyItemize}
+\item On Windows, colors are not used for output, while on other platforms ANSI escape codes are used.
+\end{DoxyItemize}\hypertarget{tests_8c_test_command_conditional}{}\doxysubsection{Compilation flags}\label{tests_8c_test_command_conditional}
+
+\begin{DoxyItemize}
+\item {\ttfamily TEST\+\_\+\+COMMAND} is used to control which test to execute. The value of {\ttfamily TEST\+\_\+\+COMMAND} determines which specific test is compiled and run.
+\end{DoxyItemize}
+
+The tests are designed to run as part of the command-\/line application or as specific unit tests when the macro {\ttfamily TEST\+\_\+\+COMMAND} is set to the corresponding test number.
+
+\begin{DoxyNote}{Note}
+This test suite is volatile due to the use of setjmp() and longjmp() for error handling in case of memory allocation failures. 
+\end{DoxyNote}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{tests_8c_ab92bb4161a6308b302d283816975c3a6}\label{tests_8c_ab92bb4161a6308b302d283816975c3a6}} 
+\index{tests.c@{tests.c}!\_@{\_}}
+\index{\_@{\_}!tests.c@{tests.c}}
+\doxysubsubsection{\texorpdfstring{\_}{\_}}
+{\footnotesize\ttfamily \#define \+\_\+(\begin{DoxyParamCaption}\item[{}]{STRING }\end{DoxyParamCaption})~gettext(STRING)}
+
+Macro for translation using gettext \mbox{\Hypertarget{tests_8c_a7635865072e17689a2e4aa26f65f8d9d}\label{tests_8c_a7635865072e17689a2e4aa26f65f8d9d}} 
+\index{tests.c@{tests.c}!TEST@{TEST}}
+\index{TEST@{TEST}!tests.c@{tests.c}}
+\doxysubsubsection{\texorpdfstring{TEST}{TEST}}
+{\footnotesize\ttfamily \#define TEST(\begin{DoxyParamCaption}\item[{}]{s,  }\item[{}]{x }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \textcolor{keywordflow}{do} \{ \(\backslash\)}
+\DoxyCodeLine{        if (x) \{ \(\backslash\)}
+\DoxyCodeLine{            printf(\textcolor{stringliteral}{"{}\(\backslash\)033[31;1m \%s \%s\(\backslash\)n \(\backslash\)033[0m"{}}, \mbox{\hyperlink{tests_8c_ab92bb4161a6308b302d283816975c3a6}{\_}}(\textcolor{stringliteral}{"{}PASS"{}}), s); \(\backslash\)}
+\DoxyCodeLine{            count\_pass++; \(\backslash\)}
+\DoxyCodeLine{        \} \textcolor{keywordflow}{else} \{ \(\backslash\)}
+\DoxyCodeLine{            printf(\textcolor{stringliteral}{"{}\(\backslash\)033[31;1m \%s \%s\(\backslash\)n \(\backslash\)033[0m"{}}, \mbox{\hyperlink{tests_8c_ab92bb4161a6308b302d283816975c3a6}{\_}}(\textcolor{stringliteral}{"{}FAIL"{}}), s); \(\backslash\)}
+\DoxyCodeLine{            count\_fail++; \(\backslash\)}
+\DoxyCodeLine{        \} \(\backslash\)}
+\DoxyCodeLine{    \} \textcolor{keywordflow}{while} (0)}
+
+\end{DoxyCode}
+
+
+Macro for testing conditions. 
+
+This macro prints the result of a test. If the test passes, it prints \char`\"{}\+PASS\char`\"{} in green, and if it fails, it prints \char`\"{}\+FAIL\char`\"{} in red. The test result is based on the condition {\ttfamily x}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The name of the test. \\
+\hline
+{\em x} & The condition to test. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{tests_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{tests_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{tests.c@{tests.c}!main@{main}}
+\index{main@{main}!tests.c@{tests.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Main function to execute the tests. 
+
+This function runs the tests based on the {\ttfamily TEST\+\_\+\+COMMAND} macro. Depending on the value of {\ttfamily TEST\+\_\+\+COMMAND}, different buffer operations (e.\+g., push, pop, grow, truncation) are tested. It also includes a benchmark section that runs a performance test of the buffer operations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of command-\/line arguments. \\
+\hline
+{\em argv} & The command-\/line arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An integer indicating success (0) or failure (non-\/zero). 
+\end{DoxyReturn}
+$<$ Number of passed tests.
+
+$<$ Number of failed tests.
+
+$<$ Flag for tracking if tests are running.\mbox{\Hypertarget{tests_8c_a84786dab5f630d5a481bbda26a596fea}\label{tests_8c_a84786dab5f630d5a481bbda26a596fea}} 
+\index{tests.c@{tests.c}!uepoch@{uepoch}}
+\index{uepoch@{uepoch}!tests.c@{tests.c}}
+\doxysubsubsection{\texorpdfstring{uepoch()}{uepoch()}}
+{\footnotesize\ttfamily uint64\+\_\+t uepoch (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns the current time in microseconds on Unix-\/based systems. 
+
+This function retrieves the system\textquotesingle{}s current time in microseconds since the Unix epoch.
+
+\begin{DoxyReturn}{Returns}
+The current time in microseconds. 
+\end{DoxyReturn}

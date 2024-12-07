@@ -2,8 +2,19 @@ GENERATES=po/ru build
 
 all: install
 
+install_opt: install
+	sudo mkdir -p /opt/buf_tests
+	sudo cp buf.h /opt/buf_tests/.
+	sudo cp tests.c /opt/buf_tests/.
+	sudo cp -r po /opt/buf_tests/.
+	sudo cp CMakeLists.txt /opt/buf_tests/.
+	sudo cp Doxyfile.in /opt/buf_tests/.
+
+delete:
+	sudo rm -rf /opt/buf_tests
+
 install:
-	mkdir build
+	mkdir -p build
 	cd build; cmake -DCMAKE_INSTALL_PREFIX=.. ..; make; make doc;
 
 test:

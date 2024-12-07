@@ -1,0 +1,1 @@
+/usr/bin/cc --coverage CMakeFiles/clear_empty.dir/tests.c.o -o clear_empty 

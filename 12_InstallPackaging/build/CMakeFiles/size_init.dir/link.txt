@@ -1,0 +1,1 @@
+/usr/bin/cc --coverage CMakeFiles/size_init.dir/tests.c.o -o size_init 

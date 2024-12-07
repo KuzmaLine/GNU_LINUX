@@ -1,0 +1,1 @@
+/usr/bin/cc --coverage CMakeFiles/grow_1000.dir/tests.c.o -o grow_1000 

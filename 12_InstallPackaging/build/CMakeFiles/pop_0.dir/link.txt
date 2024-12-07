@@ -1,0 +1,1 @@
+/usr/bin/cc --coverage CMakeFiles/pop_0.dir/tests.c.o -o pop_0 

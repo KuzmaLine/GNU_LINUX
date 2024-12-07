@@ -1,0 +1,1 @@
+/usr/bin/cc --coverage CMakeFiles/trunc_100.dir/tests.c.o -o trunc_100 

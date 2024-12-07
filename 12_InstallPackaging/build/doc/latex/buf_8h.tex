@@ -1,0 +1,287 @@
+\hypertarget{buf_8h}{}\doxysection{/home/kuzmaline/\+GNU\+\_\+\+LINUX/12\+\_\+\+Install\+Packaging/buf.h File Reference}
+\label{buf_8h}\index{/home/kuzmaline/GNU\_LINUX/12\_InstallPackaging/buf.h@{/home/kuzmaline/GNU\_LINUX/12\_InstallPackaging/buf.h}}
+
+
+Provides functions for managing growable memory buffers in C99.  
+
+
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Include dependency graph for buf.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{buf_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{buf_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structbuf}{buf}}
+\begin{DoxyCompactList}\small\item\em Represents a dynamically allocated buffer structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{buf_8h_a7c6f2f32aef0eaf45a5eac5529323365}\label{buf_8h_a7c6f2f32aef0eaf45a5eac5529323365}} 
+\#define \mbox{\hyperlink{buf_8h_a7c6f2f32aef0eaf45a5eac5529323365}{BUF\+\_\+\+INIT\+\_\+\+CAPACITY}}~8
+\begin{DoxyCompactList}\small\item\em Initial capacity of a buffer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{buf_8h_a88e2b56f5b156491cb02f82473e89e6f}\label{buf_8h_a88e2b56f5b156491cb02f82473e89e6f}} 
+\#define \mbox{\hyperlink{buf_8h_a88e2b56f5b156491cb02f82473e89e6f}{BUF\+\_\+\+ABORT}}~abort()
+\begin{DoxyCompactList}\small\item\em Abort the program on buffer allocation error. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{buf_8h_a2e5ea4565891b0fcbb70126fd26e7861}{buf\+\_\+ptr}}(v)~    ((struct \mbox{\hyperlink{structbuf}{buf}} $\ast$)((char $\ast$)(v) -\/ offsetof(struct \mbox{\hyperlink{structbuf}{buf}}, buffer)))
+\begin{DoxyCompactList}\small\item\em Converts a buffer pointer to a struct buf pointer. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{buf_8h_ac6014925c9d42373e83adf1ce996509d}{buf\+\_\+free}}(v)
+\begin{DoxyCompactList}\small\item\em Frees the dynamically allocated buffer. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{buf_8h_ad55cea011de3cc8150c695ceff1c85a9}{buf\+\_\+size}}(v)~    ((v) ? \mbox{\hyperlink{buf_8h_a2e5ea4565891b0fcbb70126fd26e7861}{buf\+\_\+ptr}}((v))-\/$>$size \+: 0)
+\begin{DoxyCompactList}\small\item\em Returns the number of elements in the buffer. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{buf_8h_a4e9969eb3467f9c4e512ce2df984f591}{buf\+\_\+capacity}}(v)~    ((v) ? \mbox{\hyperlink{buf_8h_a2e5ea4565891b0fcbb70126fd26e7861}{buf\+\_\+ptr}}((v))-\/$>$capacity \+: 0)
+\begin{DoxyCompactList}\small\item\em Returns the total capacity of the buffer. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{buf_8h_ad31b6c023dbcb95a1205f2cdc9d17f74}{buf\+\_\+push}}(v,  e)
+\begin{DoxyCompactList}\small\item\em Appends an element to the buffer. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{buf_8h_abc0e5e17c69626e0362c550d2b71cab5}{buf\+\_\+pop}}(v)~    ((v)\mbox{[}-\/-\/\mbox{\hyperlink{buf_8h_a2e5ea4565891b0fcbb70126fd26e7861}{buf\+\_\+ptr}}(v)-\/$>$size\mbox{]})
+\begin{DoxyCompactList}\small\item\em Removes and returns the last element from the buffer. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{buf_8h_a089df65401b0e7323e22dd2e20b91552}{buf\+\_\+grow}}(v,  n)~    ((v) = buf\+\_\+grow1((v), sizeof($\ast$(v)), n))
+\begin{DoxyCompactList}\small\item\em Increases the buffer\textquotesingle{}s capacity. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{buf_8h_a8050d7335ba903f7365bd0f809eefd7b}{buf\+\_\+trunc}}(v,  n)~    ((v) = buf\+\_\+grow1((v), sizeof($\ast$(v)), n -\/ \mbox{\hyperlink{buf_8h_a4e9969eb3467f9c4e512ce2df984f591}{buf\+\_\+capacity}}(v)))
+\begin{DoxyCompactList}\small\item\em Truncates the buffer to a specified capacity. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{buf_8h_a62d8f3e51b96f7e3742ca87c1ae856a8}{buf\+\_\+clear}}(v)~    ((v) ? (\mbox{\hyperlink{buf_8h_a2e5ea4565891b0fcbb70126fd26e7861}{buf\+\_\+ptr}}((v))-\/$>$size = 0) \+: 0)
+\begin{DoxyCompactList}\small\item\em Clears the buffer, setting its size to 0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides functions for managing growable memory buffers in C99. 
+
+This file contains a set of functions to manage dynamic, growable memory buffers. The functions allow for adding and removing elements, growing and truncating buffers, and freeing memory. These functions work by manipulating the buffer pointer, so any previously obtained pointers may be invalidated after certain operations.
+
+\begin{DoxyNote}{Note}
+\mbox{\hyperlink{buf_8h_ad31b6c023dbcb95a1205f2cdc9d17f74}{buf\+\_\+push()}}, \mbox{\hyperlink{buf_8h_a089df65401b0e7323e22dd2e20b91552}{buf\+\_\+grow()}}, \mbox{\hyperlink{buf_8h_a8050d7335ba903f7365bd0f809eefd7b}{buf\+\_\+trunc()}}, and \mbox{\hyperlink{buf_8h_ac6014925c9d42373e83adf1ce996509d}{buf\+\_\+free()}} may change the buffer pointer, and any previously-\/taken pointers should be considered invalidated.
+\end{DoxyNote}
+Example usage\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{float} *values = 0;}
+\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < 25; i++)}
+\DoxyCodeLine{    \mbox{\hyperlink{buf_8h_ad31b6c023dbcb95a1205f2cdc9d17f74}{buf\_push}}(values, rand() / (\textcolor{keywordtype}{float})RAND\_MAX);}
+\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < \mbox{\hyperlink{buf_8h_ad55cea011de3cc8150c695ceff1c85a9}{buf\_size}}(values); i++)}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"{}values[\%zu] = \%f\(\backslash\)n"{}}, i, values[i]);}
+\DoxyCodeLine{\mbox{\hyperlink{buf_8h_ac6014925c9d42373e83adf1ce996509d}{buf\_free}}(values);}
+
+\end{DoxyCode}
+\hypertarget{buf_8h_functions}{}\doxysubsection{Functions\+:}\label{buf_8h_functions}
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{\hyperlink{buf_8h_ad55cea011de3cc8150c695ceff1c85a9}{buf\+\_\+size(v)}}} \+: Returns the number of elements in the buffer.
+\item {\ttfamily \mbox{\hyperlink{buf_8h_a4e9969eb3467f9c4e512ce2df984f591}{buf\+\_\+capacity(v)}}} \+: Returns the total capacity of the buffer.
+\item {\ttfamily \mbox{\hyperlink{buf_8h_ac6014925c9d42373e83adf1ce996509d}{buf\+\_\+free(v)}}} \+: Destroys and frees the buffer.
+\item {\ttfamily \mbox{\hyperlink{buf_8h_ad31b6c023dbcb95a1205f2cdc9d17f74}{buf\+\_\+push(v, e)}}} \+: Appends an element to the end of the buffer.
+\item {\ttfamily \mbox{\hyperlink{buf_8h_abc0e5e17c69626e0362c550d2b71cab5}{buf\+\_\+pop(v)}}} \+: Removes and returns an element from the end of the buffer.
+\item {\ttfamily \mbox{\hyperlink{buf_8h_a089df65401b0e7323e22dd2e20b91552}{buf\+\_\+grow(v, n)}}} \+: Increases the buffer capacity by {\ttfamily n} elements.
+\item {\ttfamily \mbox{\hyperlink{buf_8h_a8050d7335ba903f7365bd0f809eefd7b}{buf\+\_\+trunc(v, n)}}} \+: Sets the buffer capacity to exactly {\ttfamily n} elements.
+\item {\ttfamily \mbox{\hyperlink{buf_8h_a62d8f3e51b96f7e3742ca87c1ae856a8}{buf\+\_\+clear(v, n)}}} \+: Sets the buffer size to 0 (for push/pop operations). 
+\end{DoxyItemize}
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{buf_8h_a4e9969eb3467f9c4e512ce2df984f591}\label{buf_8h_a4e9969eb3467f9c4e512ce2df984f591}} 
+\index{buf.h@{buf.h}!buf\_capacity@{buf\_capacity}}
+\index{buf\_capacity@{buf\_capacity}!buf.h@{buf.h}}
+\doxysubsubsection{\texorpdfstring{buf\_capacity}{buf\_capacity}}
+{\footnotesize\ttfamily \#define buf\+\_\+capacity(\begin{DoxyParamCaption}\item[{}]{v }\end{DoxyParamCaption})~    ((v) ? \mbox{\hyperlink{buf_8h_a2e5ea4565891b0fcbb70126fd26e7861}{buf\+\_\+ptr}}((v))-\/$>$capacity \+: 0)}
+
+
+
+Returns the total capacity of the buffer. 
+
+This macro returns the total capacity of the buffer, or 0 if the buffer is NULL.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & The buffer pointer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The capacity of the buffer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{buf_8h_a62d8f3e51b96f7e3742ca87c1ae856a8}\label{buf_8h_a62d8f3e51b96f7e3742ca87c1ae856a8}} 
+\index{buf.h@{buf.h}!buf\_clear@{buf\_clear}}
+\index{buf\_clear@{buf\_clear}!buf.h@{buf.h}}
+\doxysubsubsection{\texorpdfstring{buf\_clear}{buf\_clear}}
+{\footnotesize\ttfamily \#define buf\+\_\+clear(\begin{DoxyParamCaption}\item[{}]{v }\end{DoxyParamCaption})~    ((v) ? (\mbox{\hyperlink{buf_8h_a2e5ea4565891b0fcbb70126fd26e7861}{buf\+\_\+ptr}}((v))-\/$>$size = 0) \+: 0)}
+
+
+
+Clears the buffer, setting its size to 0. 
+
+This macro sets the size of the buffer to 0, effectively clearing it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & The buffer pointer. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{buf_8h_ac6014925c9d42373e83adf1ce996509d}\label{buf_8h_ac6014925c9d42373e83adf1ce996509d}} 
+\index{buf.h@{buf.h}!buf\_free@{buf\_free}}
+\index{buf\_free@{buf\_free}!buf.h@{buf.h}}
+\doxysubsubsection{\texorpdfstring{buf\_free}{buf\_free}}
+{\footnotesize\ttfamily \#define buf\+\_\+free(\begin{DoxyParamCaption}\item[{}]{v }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \textcolor{keywordflow}{do} \{ \(\backslash\)}
+\DoxyCodeLine{        if (v) \{ \(\backslash\)}
+\DoxyCodeLine{            free(\mbox{\hyperlink{buf_8h_a2e5ea4565891b0fcbb70126fd26e7861}{buf\_ptr}}((v))); \(\backslash\)}
+\DoxyCodeLine{            (v) = 0; \(\backslash\)}
+\DoxyCodeLine{        \} \(\backslash\)}
+\DoxyCodeLine{    \} \textcolor{keywordflow}{while} (0)}
+
+\end{DoxyCode}
+
+
+Frees the dynamically allocated buffer. 
+
+This macro frees the memory allocated for the buffer and invalidates the pointer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & The buffer pointer to be freed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{buf_8h_a089df65401b0e7323e22dd2e20b91552}\label{buf_8h_a089df65401b0e7323e22dd2e20b91552}} 
+\index{buf.h@{buf.h}!buf\_grow@{buf\_grow}}
+\index{buf\_grow@{buf\_grow}!buf.h@{buf.h}}
+\doxysubsubsection{\texorpdfstring{buf\_grow}{buf\_grow}}
+{\footnotesize\ttfamily \#define buf\+\_\+grow(\begin{DoxyParamCaption}\item[{}]{v,  }\item[{}]{n }\end{DoxyParamCaption})~    ((v) = buf\+\_\+grow1((v), sizeof($\ast$(v)), n))}
+
+
+
+Increases the buffer\textquotesingle{}s capacity. 
+
+This macro grows the buffer by {\ttfamily n} elements. It is equivalent to calling {\ttfamily buf\+\_\+grow1()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & The buffer pointer. \\
+\hline
+{\em n} & The number of elements to add to the buffer\textquotesingle{}s capacity. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{buf_8h_abc0e5e17c69626e0362c550d2b71cab5}\label{buf_8h_abc0e5e17c69626e0362c550d2b71cab5}} 
+\index{buf.h@{buf.h}!buf\_pop@{buf\_pop}}
+\index{buf\_pop@{buf\_pop}!buf.h@{buf.h}}
+\doxysubsubsection{\texorpdfstring{buf\_pop}{buf\_pop}}
+{\footnotesize\ttfamily \#define buf\+\_\+pop(\begin{DoxyParamCaption}\item[{}]{v }\end{DoxyParamCaption})~    ((v)\mbox{[}-\/-\/\mbox{\hyperlink{buf_8h_a2e5ea4565891b0fcbb70126fd26e7861}{buf\+\_\+ptr}}(v)-\/$>$size\mbox{]})}
+
+
+
+Removes and returns the last element from the buffer. 
+
+This macro removes and returns the last element of the buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & The buffer pointer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The last element of the buffer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{buf_8h_a2e5ea4565891b0fcbb70126fd26e7861}\label{buf_8h_a2e5ea4565891b0fcbb70126fd26e7861}} 
+\index{buf.h@{buf.h}!buf\_ptr@{buf\_ptr}}
+\index{buf\_ptr@{buf\_ptr}!buf.h@{buf.h}}
+\doxysubsubsection{\texorpdfstring{buf\_ptr}{buf\_ptr}}
+{\footnotesize\ttfamily \#define buf\+\_\+ptr(\begin{DoxyParamCaption}\item[{}]{v }\end{DoxyParamCaption})~    ((struct \mbox{\hyperlink{structbuf}{buf}} $\ast$)((char $\ast$)(v) -\/ offsetof(struct \mbox{\hyperlink{structbuf}{buf}}, buffer)))}
+
+
+
+Converts a buffer pointer to a struct buf pointer. 
+
+This macro calculates the address of the {\ttfamily struct buf} structure from the given buffer pointer. It is used internally by other macros to manage buffer operations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & The buffer pointer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the buffer structure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{buf_8h_ad31b6c023dbcb95a1205f2cdc9d17f74}\label{buf_8h_ad31b6c023dbcb95a1205f2cdc9d17f74}} 
+\index{buf.h@{buf.h}!buf\_push@{buf\_push}}
+\index{buf\_push@{buf\_push}!buf.h@{buf.h}}
+\doxysubsubsection{\texorpdfstring{buf\_push}{buf\_push}}
+{\footnotesize\ttfamily \#define buf\+\_\+push(\begin{DoxyParamCaption}\item[{}]{v,  }\item[{}]{e }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \textcolor{keywordflow}{do} \{ \(\backslash\)}
+\DoxyCodeLine{        if (\mbox{\hyperlink{buf_8h_a4e9969eb3467f9c4e512ce2df984f591}{buf\_capacity}}((v)) == \mbox{\hyperlink{buf_8h_ad55cea011de3cc8150c695ceff1c85a9}{buf\_size}}((v))) \{ \(\backslash\)}
+\DoxyCodeLine{            (v) = buf\_grow1(v, \textcolor{keyword}{sizeof}(*(v)), \(\backslash\)}
+\DoxyCodeLine{                            !\mbox{\hyperlink{buf_8h_a4e9969eb3467f9c4e512ce2df984f591}{buf\_capacity}}((v)) ? \(\backslash\)}
+\DoxyCodeLine{                              BUF\_INIT\_CAPACITY : \(\backslash\)}
+\DoxyCodeLine{                              buf\_capacity((v))); \(\backslash\)}
+\DoxyCodeLine{        \} \(\backslash\)}
+\DoxyCodeLine{        (v)[\mbox{\hyperlink{buf_8h_a2e5ea4565891b0fcbb70126fd26e7861}{buf\_ptr}}((v))-\/>size++] = (e); \(\backslash\)}
+\DoxyCodeLine{    \} \textcolor{keywordflow}{while} (0)}
+
+\end{DoxyCode}
+
+
+Appends an element to the buffer. 
+
+This macro appends the element {\ttfamily e} to the buffer. If the buffer is full, it will be grown to accommodate the new element.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & The buffer pointer. \\
+\hline
+{\em e} & The element to append to the buffer. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{buf_8h_ad55cea011de3cc8150c695ceff1c85a9}\label{buf_8h_ad55cea011de3cc8150c695ceff1c85a9}} 
+\index{buf.h@{buf.h}!buf\_size@{buf\_size}}
+\index{buf\_size@{buf\_size}!buf.h@{buf.h}}
+\doxysubsubsection{\texorpdfstring{buf\_size}{buf\_size}}
+{\footnotesize\ttfamily \#define buf\+\_\+size(\begin{DoxyParamCaption}\item[{}]{v }\end{DoxyParamCaption})~    ((v) ? \mbox{\hyperlink{buf_8h_a2e5ea4565891b0fcbb70126fd26e7861}{buf\+\_\+ptr}}((v))-\/$>$size \+: 0)}
+
+
+
+Returns the number of elements in the buffer. 
+
+This macro returns the current size of the buffer, or 0 if the buffer is NULL.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & The buffer pointer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of elements in the buffer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{buf_8h_a8050d7335ba903f7365bd0f809eefd7b}\label{buf_8h_a8050d7335ba903f7365bd0f809eefd7b}} 
+\index{buf.h@{buf.h}!buf\_trunc@{buf\_trunc}}
+\index{buf\_trunc@{buf\_trunc}!buf.h@{buf.h}}
+\doxysubsubsection{\texorpdfstring{buf\_trunc}{buf\_trunc}}
+{\footnotesize\ttfamily \#define buf\+\_\+trunc(\begin{DoxyParamCaption}\item[{}]{v,  }\item[{}]{n }\end{DoxyParamCaption})~    ((v) = buf\+\_\+grow1((v), sizeof($\ast$(v)), n -\/ \mbox{\hyperlink{buf_8h_a4e9969eb3467f9c4e512ce2df984f591}{buf\+\_\+capacity}}(v)))}
+
+
+
+Truncates the buffer to a specified capacity. 
+
+This macro sets the buffer\textquotesingle{}s capacity to exactly {\ttfamily n} elements.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & The buffer pointer. \\
+\hline
+{\em n} & The new capacity of the buffer. \\
+\hline
+\end{DoxyParams}
