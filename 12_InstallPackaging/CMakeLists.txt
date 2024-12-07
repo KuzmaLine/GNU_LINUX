@@ -27,48 +27,91 @@ add_link_options(--coverage)
 
 add_executable(benchtest tests.c)
 target_compile_definitions(benchtest PRIVATE TEST_COMMAND=0)
+install(TARGETS benchtest DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(capacity_test tests.c )
 target_compile_definitions(capacity_test PRIVATE TEST_COMMAND=1)
+install(TARGETS capacity_test DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(size_init tests.c)
 target_compile_definitions(size_init PRIVATE TEST_COMMAND=2)
+install(TARGETS size_init DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(size_1 tests.c)
 target_compile_definitions(size_1 PRIVATE TEST_COMMAND=3)
+install(TARGETS size_1 DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(value tests.c)
 target_compile_definitions(value PRIVATE TEST_COMMAND=4)
+install(TARGETS value DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(clear tests.c)
 target_compile_definitions(clear PRIVATE TEST_COMMAND=5)
+install(TARGETS clear DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(clear_not_free tests.c)
 target_compile_definitions(clear_not_free PRIVATE TEST_COMMAND=6)
+install(TARGETS clear_not_free DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(free tests.c)
 target_compile_definitions(free PRIVATE TEST_COMMAND=7)
+install(TARGETS free DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(clear_empty tests.c)
 target_compile_definitions(clear_empty PRIVATE TEST_COMMAND=8)
+install(TARGETS clear_empty DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(clear_no_op tests.c)
 target_compile_definitions(clear_no_op PRIVATE TEST_COMMAND=9)
+install(TARGETS clear_no_op DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(size_10000 tests.c)
 target_compile_definitions(size_10000 PRIVATE TEST_COMMAND=10)
+install(TARGETS size_10000 DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(match_10000 tests.c)
 target_compile_definitions(match_10000 PRIVATE TEST_COMMAND=11)
+install(TARGETS match_10000 DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(grow_1000 tests.c)
 target_compile_definitions(grow_1000 PRIVATE TEST_COMMAND=12)
+install(TARGETS grow_1000 DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(size_0_grow tests.c)
 target_compile_definitions(size_0_grow PRIVATE TEST_COMMAND=13)
+install(TARGETS size_0_grow DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(trunc_100 tests.c)
 target_compile_definitions(trunc_100 PRIVATE TEST_COMMAND=14)
+install(TARGETS trunc_100 DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(size_4 tests.c)
 target_compile_definitions(size_4 PRIVATE TEST_COMMAND=15)
+install(TARGETS size_4 DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(size_3 tests.c)
 target_compile_definitions(size_3 PRIVATE TEST_COMMAND=17)
+install(TARGETS size_3 DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(pop_3 tests.c)
 target_compile_definitions(pop_3 PRIVATE TEST_COMMAND=16)
+install(TARGETS pop_3 DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(pop_2 tests.c)
 target_compile_definitions(pop_2 PRIVATE TEST_COMMAND=18)
+install(TARGETS pop_2 DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(pop_1 tests.c)
 target_compile_definitions(pop_1 PRIVATE TEST_COMMAND=19)
+install(TARGETS pop_1 DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(pop_0 tests.c)
 target_compile_definitions(pop_0 PRIVATE TEST_COMMAND=20)
+install(TARGETS pop_0 DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 add_executable(size_0_pop tests.c)
 target_compile_definitions(size_0_pop PRIVATE TEST_COMMAND=21)
+install(TARGETS size_0_pop DESTINATION ${CMAKE_INSTALL_PREFIX})
 
 add_test(NAME CapacityInit
          COMMAND capacity_test)

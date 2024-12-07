@@ -104,7 +104,7 @@ static void test_abort(void)
 #define TEST(s, x) \
     do { \
         if (x) { \
-            printf("\033[31;1m %s %s\n \033[0m", _("PASS"), s); \
+            printf("\033[32;1m %s %s\n \033[0m", _("PASS"), s); \
             count_pass++; \
         } else { \
             printf("\033[31;1m %s %s\n \033[0m", _("FAIL"), s); \

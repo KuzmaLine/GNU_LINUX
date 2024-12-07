@@ -1,41 +1,87 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Russian translations for PACKAGE package
+# Английские переводы для пакета PACKAGE.
+# Copyright (C) 2024 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# KuzmaLine <kuzmaline@desktop-vu0q5q4.localdomain>, 2024.
 #
-#, fuzzy
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-07 22:51+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2024-12-08 00:48+0300\n"
+"Last-Translator: KuzmaLine <kuzmaline@desktop-vu0q5q4.localdomain>\n"
+"Language-Team: Russian <gnu@d07.ru>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: tests.c:78
+#: tests.c:107
 msgid "PASS"
 msgstr "ПРОШЁЛ"
 
-#: tests.c:81
+#: tests.c:110
 msgid "FAIL"
 msgstr "НЕ ПРОШЁЛ"
 
-#: tests.c:195
+#: tests.c:224
 #, c-format
-msgid "This program is controlled by the TEST_COMMAND environment variable, \n initialized before compiling the program with a value from 0 to 21, to select a specific test. This program is initialized with the value %d.\n                 0 - benchmark.\n                 1 - Buffer volume test\n                 2 - Buffer size test\n                 3 - Test for the buffer size after making an element\n                 4 - Test for the correct value of this element\n                 5 - Buffer cleaning test\n                 6 - Test whether the buffer is not released\n                 7 - Test for freeing up memory for the buffer\n                 8 - Test for the size of the freed buffer\n                 9 - Test for the value of the pointer of the freed buffer\n                 10 - Size test for 10,000 items\n                 11 - Test for the correct element search\n                 12 - Buffer size increase test\n                 13 - Memory size test after buffer grow\n                 14 - Buffer Truncation test\n                 15-21 - Tests for adding and removing using push and pop buffers.\n  --help  Display this help message.\n"
-msgstr "Данная программа управляется переменной окружения TEST_COMMAND, \n инициализируемой перед компиляцией программы значеним от 0 до 21, для выбора конкретного теста. Данная программа проинициализирована значением %d.\n                0 - бенчмарк.\n                1 - Тест на объём буфера\n                2 - Тест на размер буфера\n                3 - Тест на размер буфера после внесения элемента\n                4 - Тест на корректное значение данного элемента\n                5 - Тест на очистку буфера\n                6 - Тест, не освобождён ли буфер\n                7 - Тест на освобождение памяти для буфера\n                8 - Тест на размер освобождённого буфера\n                9 - Тест на значение указателя освобождённого буфера\n                10 - Тест на размер для 10000 элементов\n                11 - Тест на корректный поиск элемента\n                12 - Тест увеличение размера буфера\n                13 - Тест на размер памяти после grow буфера\n                14 - Тест на урезание буфера\n                15 - 21 - Тесты на добавление и удаление с помощью push и pop буфера.\n --help Выводит данное вспомогательное сообщение.\n"
+msgid ""
+"This program is controlled by the TEST_COMMAND environment variable, \n"
+" initialized before compiling the program with a value from 0 to 21, to "
+"select a specific test. This program is initialized with the value %d.\n"
+"                 0 - benchmark.\n"
+"                 1 - Buffer volume test\n"
+"                 2 - Buffer size test\n"
+"                 3 - Test for the buffer size after making an element\n"
+"                 4 - Test for the correct value of this element\n"
+"                 5 - Buffer cleaning test\n"
+"                 6 - Test whether the buffer is not released\n"
+"                 7 - Test for freeing up memory for the buffer\n"
+"                 8 - Test for the size of the freed buffer\n"
+"                 9 - Test for the value of the pointer of the freed buffer\n"
+"                 10 - Size test for 10,000 items\n"
+"                 11 - Test for the correct element search\n"
+"                 12 - Buffer size increase test\n"
+"                 13 - Memory size test after buffer grow\n"
+"                 14 - Buffer Truncation test\n"
+"                 15-21 - Tests for adding and removing using push and pop "
+"buffers.\n"
+"  --help  Display this help message.\n"
+msgstr ""
+"Данная программа управляется переменной окружения TEST_COMMAND, \n"
+" инициализируемой перед компиляцией программы значеним от 0 до 21, для "
+"выбора конкретного теста. Данная программа проинициализирована значением "
+"%d.\n"
+"                0 - бенчмарк.\n"
+"                1 - Тест на объём буфера\n"
+"                2 - Тест на размер буфера\n"
+"                3 - Тест на размер буфера после внесения элемента\n"
+"                4 - Тест на корректное значение данного элемента\n"
+"                5 - Тест на очистку буфера\n"
+"                6 - Тест, не освобождён ли буфер\n"
+"                7 - Тест на освобождение памяти для буфера\n"
+"                8 - Тест на размер освобождённого буфера\n"
+"                9 - Тест на значение указателя освобождённого буфера\n"
+"                10 - Тест на размер для 10000 элементов\n"
+"                11 - Тест на корректный поиск элемента\n"
+"                12 - Тест увеличение размера буфера\n"
+"                13 - Тест на размер памяти после grow буфера\n"
+"                14 - Тест на урезание буфера\n"
+"                15 - 21 - Тесты на добавление и удаление с помощью push и "
+"pop буфера.\n"
+" --help Выводит данное вспомогательное сообщение.\n"
 
-#: tests.c:233
+#: tests.c:262
 #, c-format
 msgid "%.6gs : actual %lu, expect 428859598\n"
 msgstr "%.6gs : получено $lu, ожидалось 428859598\n"
 
-#: tests.c:417
+#: tests.c:446
 #, c-format
 msgid "%d fail, %d pass\n"
 msgstr "%d не пройдено, %d пройдено\n"

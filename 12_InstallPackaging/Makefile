@@ -1,4 +1,4 @@
-GENERATES=po/ru build
+GENERATES=po/ru build benchtest capacity_test clear clear_empty clear_no_op clear_not_free free grow_1000 match_10000 pop_0 pop_1 pop_2 pop_3 size_0_grow size_0_pop size_1 size_10000 size_3 size_4 size_init trunc_100 value
 
 all: install
 
@@ -15,7 +15,7 @@ delete:
 
 install:
 	mkdir -p build
-	cd build; cmake -DCMAKE_INSTALL_PREFIX=.. ..; make; make doc;
+	cd build; cmake -DCMAKE_INSTALL_PREFIX=.. ..; make install; make doc;
 
 test:
 	cd build; ctest; ctest -T Coverage
