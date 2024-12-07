@@ -5,20 +5,17 @@ find_package(Gettext REQUIRED)
 
 GETTEXT_PROCESS_PO_FILES(ru ALL INSTALL_DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/po PO_FILES ${CMAKE_CURRENT_SOURCE_DIR}/po/find_num.po)
 
-# Найти Doxygen
 find_package(Doxygen)
 
-# Если Doxygen найден, добавляем поддержку генерации документации
 if(DOXYGEN_FOUND)
-    set(DOXYGEN_INPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR})  # Путь к исходникам
-    set(DOXYGEN_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/docs)  # Путь для выходных файлов
+    set(DOXYGEN_INPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}) 
+    set(DOXYGEN_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/docs)
 
-    configure_file(Doxyfile.in Doxyfile @ONLY)  # Настроим Doxygen с помощью шаблона
+    configure_file(Doxyfile.in Doxyfile @ONLY)
 
     add_custom_target(doc
         COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-        COMMENT "Generating documentation with Doxygen"
         VERBATIM)
 endif()
 
