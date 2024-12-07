@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  08_I18n\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-09 16:46+0300\n"
+"POT-Creation-Date: 2024-12-07 16:14+0300\n"
 "PO-Revision-Date: 2024-11-09 15:56+0300\n"
 "Last-Translator: KuzmaLine <kuzmaline@desktop-vu0q5q4.localdomain>\n"
 "Language-Team: Russian <gnu@d07.ru>\n"
@@ -19,22 +19,46 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: find_num.c:27 find_num.c:33 find_num.c:56
+#: find_num.c:129
+#, c-format
+msgid "This program lets you guess a number between 0 and 100 using binary search.\n"
+" -r  Output numbers in Roman notation.\n"
+" --help  Display this help message.\n"
+msgstr "Данная программа позволяет вам попытаться угадать число от 0 до 100 с помощью двоичного поиска.\n"
+" -r Вывод чисел в римской нотации.\n"
+" --help Выводит данной вспомогательное сообщение.\n"
+
+#: find_num.c:150 find_num.c:160 find_num.c:190
 #, c-format
 msgid "Is your number equal %d?\n"
 msgstr "Ваше число равно %d?\n"
 
-#: find_num.c:41
+#: find_num.c:153 find_num.c:163 find_num.c:193
+#, c-format
+msgid "Is your number equal %s?\n"
+msgstr "Ваше число равно %s?\n"
+
+#: find_num.c:172
 #, c-format
 msgid "Is your number less than %d?\n"
 msgstr "Ваше число меньше, чем %d?\n"
 
-#: find_num.c:51
+#: find_num.c:175
+#, c-format
+msgid "Is your number less than %s?\n"
+msgstr "Ваше число меньше, чем %s?\n"
+
+#: find_num.c:185
 #, c-format
 msgid "Incorrect answer. Please say y (YES) or n (NO)\n"
 msgstr "Неверный ввод. Пожалуйста, введите y (ДА) или n (НЕТ)\n"
 
-#: find_num.c:59
+#: find_num.c:197
 #, c-format
-msgid "Number is %d\n"
+msgid "Number is equal %d?\n"
 msgstr "Число равно %d\n"
+
+#: find_num.c:200
+#, c-format
+msgid "Number is equal %s?\n"
+msgstr "Число равно %s\n"
