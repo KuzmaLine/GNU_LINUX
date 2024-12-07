@@ -1,1 +1,0 @@
-/usr/bin/cc --coverage CMakeFiles/free.dir/tests.c.o -o free 

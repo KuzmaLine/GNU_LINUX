@@ -1,1 +1,0 @@
-/usr/bin/cc --coverage CMakeFiles/capacity_test.dir/tests.c.o -o capacity_test 

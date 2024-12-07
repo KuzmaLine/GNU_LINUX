@@ -1,1 +1,0 @@
-/usr/bin/cc --coverage CMakeFiles/match_10000.dir/tests.c.o -o match_10000 

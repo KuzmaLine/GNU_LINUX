@@ -1,1 +1,0 @@
-/usr/bin/cc --coverage CMakeFiles/size_0_grow.dir/tests.c.o -o size_0_grow 

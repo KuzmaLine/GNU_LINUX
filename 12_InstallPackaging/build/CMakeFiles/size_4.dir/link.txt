@@ -1,1 +1,0 @@
-/usr/bin/cc --coverage CMakeFiles/size_4.dir/tests.c.o -o size_4 
