@@ -2,20 +2,26 @@ GENERATES=po/ru build benchtest capacity_test clear clear_empty clear_no_op clea
 
 all: install
 
-install_opt: install
+install_root: install
 	sudo mkdir -p /opt/buf_tests
 	sudo cp buf.h /opt/buf_tests/.
 	sudo cp tests.c /opt/buf_tests/.
 	sudo cp -r po /opt/buf_tests/.
 	sudo cp CMakeLists.txt /opt/buf_tests/.
 	sudo cp Doxyfile.in /opt/buf_tests/.
+	sudo cp buf.h /usr/include/.
+	sudo cp tests.c /usr/include/.
 
 delete:
 	sudo rm -rf /opt/buf_tests
+	sudo rm -f /usr/include/buf.h
+	sudo rm -f /usr/include/tests.c
 
 install:
+	echo "У меня нет никаких идей, почемй gettext не работает. Всё сделано в точной копии с 11 и 8 ДЗ, и всё равно тесты не хотят видеть перевод, хоть убейся.\n"
 	mkdir -p build
 	cd build; cmake -DCMAKE_INSTALL_PREFIX=.. ..; make install; make doc;
+	cp build/bin/* .
 
 test:
 	cd build; ctest; ctest -T Coverage
@@ -24,7 +30,7 @@ doc:
 	python3 -m http.server -d build/doc/html 5000
 
 man:
-	cd build; help2man -N ./benchtest > tests.1; man ./tests.1
+	cd build/bin; help2man -N ./benchtest > tests.1; man ./tests.1
 
 clean:
 	rm -rf ${GENERATES}
