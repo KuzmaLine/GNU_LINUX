@@ -196,6 +196,8 @@ uint64_t uepoch(void)
 }
 #endif
 
+#define LOCALE_PATH "/usr/bin/po"
+
 /**
  * @brief Main function to execute the tests.
  * 
@@ -208,6 +210,9 @@ uint64_t uepoch(void)
  * @return An integer indicating success (0) or failure (non-zero).
  */
 int main(int argc, char **argv) {
+    setlocale(LC_ALL, "");
+    bindtextdomain("tests", LOCALE_PATH);
+    textdomain("tests");
     int opt;
 // Определение длинных опций
     static struct option long_options[] = {

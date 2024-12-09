@@ -1,13 +1,12 @@
-# Russian translations for PACKAGE package
+# Russian translations for 12_InstallPackaging package
 # Английские переводы для пакета PACKAGE.
-# Copyright (C) 2024 THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2024 THE 12_InstallPackaging'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # KuzmaLine <kuzmaline@desktop-vu0q5q4.localdomain>, 2024.
 #
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: 12_InstallPackaging\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-07 22:51+0300\n"
 "PO-Revision-Date: 2024-12-08 00:48+0300\n"
@@ -28,18 +27,19 @@ msgstr "ПРОШЁЛ"
 msgid "FAIL"
 msgstr "НЕ ПРОШЁЛ"
 
-#: tests.c:224
+#: tests.c:229
 #, c-format
 msgid ""
-"This program is controlled by the TEST_COMMAND environment variable, \n"
-" initialized before compiling the program with a value from 0 to 21, to "
-"select a specific test. This program is initialized with the value %d.\n"
-"                 0 - benchmark.\n"
-"                 1 - Buffer volume test\n"
-"                 2 - Buffer size test\n"
-"                 3 - Test for the buffer size after making an element\n"
-"                 4 - Test for the correct value of this element\n"
-"                 5 - Buffer cleaning test\n"
+"This program is controlled by the TEST_COMMAND environment variable,\n"
+"                initialized before compiling the program with a value from 0 "
+"to 21, to select a specific test. This program is initialized with the value "
+"%d.\n"
+"                0 - benchmark.\n"
+"                1 - Buffer volume test\n"
+"                2 - Buffer size test\n"
+"                3 - Test for the buffer size after making an element\n"
+"                4 - Test for the correct value of this element\n"
+"                5 - Buffer cleaning test\n"
 "                 6 - Test whether the buffer is not released\n"
 "                 7 - Test for freeing up memory for the buffer\n"
 "                 8 - Test for the size of the freed buffer\n"
@@ -76,12 +76,12 @@ msgstr ""
 "pop буфера.\n"
 " --help Выводит данное вспомогательное сообщение.\n"
 
-#: tests.c:262
+#: tests.c:267
 #, c-format
 msgid "%.6gs : actual %lu, expect 428859598\n"
-msgstr "%.6gs : получено $lu, ожидалось 428859598\n"
+msgstr "%.6gs : получено %lu, ожидалось 428859598\n"
 
-#: tests.c:446
+#: tests.c:451
 #, c-format
 msgid "%d fail, %d pass\n"
 msgstr "%d не пройдено, %d пройдено\n"
